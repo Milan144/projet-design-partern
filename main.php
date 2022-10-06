@@ -2,18 +2,12 @@
 
 try {
     #MAC
-    #$pdo = new PDO("mysql:host=localhost;dbname=bot-crypto", "root", "root");
+    #$pdo = new PDO("mysql:host=localhost;dbname=bot-crypto", "gamard3u_appli", "32021323");
     #WIN
     $pdo = new PDO("mysql:host=localhost;dbname=bot-crypto", "root", "");
 } catch (PDOException $e) {
     echo $e->getMessage();
 }
-
-
-// Method: POST, PUT, GET etc
-// Data: array("param" => "value") ==> index.php?param=value
-
-//example : 
 
 $urlAPI = "https://api.binance.com/api/v3/ticker/price";
 
