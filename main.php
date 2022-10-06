@@ -3,6 +3,7 @@ include("connexion.php");
 include("class/class.proxydataretriever.php");
 include("class/class.dataretriever.php");
 include("class/class.algorithm.php");
+include("class/class.wallet.php");
 
 
 // $urlAPI = "https://api.binance.com/api/v3/ticker/price";

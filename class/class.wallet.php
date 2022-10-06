@@ -5,13 +5,15 @@ class Wallet
 {
     private $id;
     private $symbol;
-    private $amount;
+    private $buyingPrice;
+    private $quantity;
 
-    public function __construct(int $id, String $symbol, int $amount)
+    public function __construct(int $id, String $symbol, int $buyingPrice, int $quantity)
     {
         $this->id = $id;
         $this->symbol = $symbol;
-        $this->amount = $amount;
+        $this->buyingPrice = $buyingPrice;
+        $this->quantity = $quantity;
     }
 }
 
@@ -31,9 +33,10 @@ class WalletManager
         if ($wallet = $getWallet->fetch(PDO::FETCH_ASSOC)) {
             $id = $wallet['id'];
             $symbol = $wallet['symbol'];
-            $amount = $wallet['value'];
+            $buyingPrice = $wallet['buyingPrice'];
+            $quantity = $wallet['quantity'];
 
-            return new Wallet($id, $symbol, $amount);
+            return new Wallet($id, $symbol, $buyingPrice, $quantity);
         }
     }
 
