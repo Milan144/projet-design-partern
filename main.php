@@ -1,22 +1,35 @@
 <?php
 
-try {
-    #MAC
-    #$pdo = new PDO("mysql:host=localhost;dbname=bot-crypto", "gamard3u_appli", "32021323");
-    #WIN
-    $pdo = new PDO("mysql:host=localhost;dbname=bot-crypto", "root", "");
-} catch (PDOException $e) {
-    echo $e->getMessage();
+class Algorithm{
+
+    //Constructor
+    public function __construct(){
+        //Nothing to do here
+    }
+    // Get Signal returns 1 if the signa is buy, -1 if the signal is sell,  if the signal is hold
+
+    public function getSignal ($arrayPrices){
+        //Size of the array
+        $size = count($arrayPrices);
+        
+        if($size < 10){
+            return 0;
+        }
+
+        $sum = 0;
+        for ($i = 0; $i < $size-1; $i++){
+            $sum += $arrayPrices[$i];
+        }
+
+        
+        $average = $sum / ($size -1);
+
+        if ($arrayPrices[$size -1] > ($average*1.02)){
+            return 1;
+        }
+        if ($arrayPrices[$size -1] < $average/1.02){
+            return -1;
+        }
+        return 0;
+    }
 }
-
-$urlAPI = "https://api.binance.com/api/v3/ticker/price";
-
-$api = file_get_contents('https://api.binance.com/api/v3/ticker/price');
-
-
-
-$tabPrixCrypto = (explode("{", $api));
-$prixBTC = ($tabPrixCrypto[12]);
-
-preg_match_all('!\d+(?:\.\d+)?!', $prixBTC, $matches);
-echo ($matches[0][0]);
