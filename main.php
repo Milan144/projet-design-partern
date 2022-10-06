@@ -20,5 +20,5 @@ include("class/class.wallet.php");
 
 
 $manager = new WalletManager($pdo);
-$wallet = $manager->getById(1);
+$wallet = $manager->getById(2);
 var_dump($wallet);
