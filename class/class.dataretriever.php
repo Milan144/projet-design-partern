@@ -2,7 +2,7 @@
 
 class DataRetriever
 {
-    private $url;
+    private $url = "https://api.binance.com/api/v3/ticker/price";
     private $data = array();
 
     public function __construct($url)
