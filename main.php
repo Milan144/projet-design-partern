@@ -3,6 +3,8 @@ include("connexion.php");
 include("class/class.proxydataretriever.php");
 include("class/class.dataretriever.php");
 include("class/class.algorithm.php");
+include("class/class.wallet.php");
+include("class/class.trader.php");
 
 
 // $urlAPI = "https://api.binance.com/api/v3/ticker/price";
@@ -19,5 +21,5 @@ include("class/class.algorithm.php");
 
 
 $manager = new WalletManager($pdo);
-$wallet = $manager->getById(2);
+$wallet = $manager->getById(1);
 var_dump($wallet);
