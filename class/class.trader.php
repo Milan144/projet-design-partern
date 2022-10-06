@@ -7,3 +7,5 @@ class Trader{
     
     sell(String symbol, amount, price);
 }
+
+?>
