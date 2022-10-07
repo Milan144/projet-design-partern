@@ -26,7 +26,7 @@ class WalletManager
         $this->setDb($db);
     }
 
-    public function getById($id)
+    public function getById(int $id)
     {
         $getWallet = $this->db->prepare("select * from Wallet where id=? limit 1");
         $wallet = $getWallet->execute(array($id));
@@ -40,19 +40,19 @@ class WalletManager
         }
     }
 
-    public function addWallet($symbol, $buyingPrice, $quantity)
+    public function addWallet(String $symbol, float $buyingPrice, float $quantity)
     {
         $del = $this->db->prepare("insert into Wallet (symbol, buyingPrice, quantity) values (?,?,?)");
         $del->execute(array($symbol, $buyingPrice, $quantity));
     }
 
-    public function updateWalletSold($amount, $id)
+    public function updateWalletSold(float $amount, int $id)
     {
         $update = $this->db->prepare("update Wallet set quantity=? where id=?");
         $update->execute(array($amount, $id));
     }
 
-    public function deleteWallet($id)
+    public function deleteWallet(int $id)
     {
         $del = $this->db->prepare("delete from Wallet where id=?");
         $del->execute(array($id));
