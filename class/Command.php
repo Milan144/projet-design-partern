@@ -1,5 +1,6 @@
 <?php
 
+
 class TradingCommand{
      private String $action;
      private String $symbol;

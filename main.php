@@ -29,6 +29,7 @@ $dtr = new DataRetriever('https://api.binance.com/api/v3/ticker/price');
 // $pltf->run();
 
 
+
 //__________________________________________________________
 
 // initialisation : Wallet et Banker

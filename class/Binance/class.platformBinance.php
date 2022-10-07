@@ -1,6 +1,5 @@
 <?php
 
-
 class PlatformBinance{
     Analyser $analyser;
     Trader $trader;
