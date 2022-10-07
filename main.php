@@ -5,6 +5,7 @@ include("class/class.dataretriever.php");
 include("class/class.algorithm.php");
 include("class/class.trader.php");
 include("class/class.wallet.php");
+include("class/class.trader.php");
 
 
 // $urlAPI = "https://api.binance.com/api/v3/ticker/price";
