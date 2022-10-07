@@ -2,7 +2,7 @@
 
 include "main.php";
 
-$dtr = new DataRetrievr();
+$dtr = new DataRetriever('https://api.binance.com/api/v3/ticker/price');
 
 while(TRUE){
     $data = $dtr->getData();
