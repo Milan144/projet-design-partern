@@ -39,6 +39,14 @@ $wallet = new Wallet();
 
 $bank = new Banker($wallet); //lien avec le wallet                  #Pattern Proxy lien Trader DB
 
+// Initialisation du traitement des data
+
+$url = "https://api.binance.com/api/v3/ticker/price";  //API BINANCE
+
+$dtr = new DataRetriever($url);
+
+$proxy = new ProxyDataRetriever($dtr);
+
 //Initialisation du trader ( Factory => construction des objets)
 
 $factory = newBinanceTraderFactory();
@@ -47,12 +55,17 @@ $factory = newBinanceTraderFactory();
 
 $traderLambda = $factory->createTrader(new Banker());
 
-// initialisation de l'analyser
+// initialisation de l'analyser : prend en charge un historique de pris donné par le dataretriever
 
 
 
 //lance la plateforme qui prend en charge l'analyser et le trader
 //l'analyser tourne et prend ses décisions : lorsque 1 /-1 est retourné ==> envoie d'une instruction (via les classes COMMAND et WAITFORCOMMAND) au trader de l'achat ou de la vente
+
+# if getSignal return 0 => wait
+# if getSignal return 1 => lancement TradingCommand -> buy
+# if getSignal return -1 => lancement TradinCommand -> sell
+
 
 // trader demande au banker si il y a assez pour effectuer une transaction ou alors encaisse
 
