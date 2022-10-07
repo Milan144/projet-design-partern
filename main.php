@@ -1,29 +1,34 @@
 <?php
-require_once('class/classes.php');
 
-$manager = new WalletManager($pdo);
-$wallet = $manager->getById(2);
-$manager->addWallet('$', 1, 200000000);
-// $manager->updateWalletSold(2, 7);
-var_dump($wallet);
+include "class/class.algorithm.php";
+include "class/class.dataretriever.php";
+include "class/class.proxydataretriever.php";
 
-$bdd = new DBConnector();
-$pdo = $bdd->connexion();
-$bank = new Banker($wallet);
-$money = $bank->getMyMoney($pdo, 2);
-echo "solde sur le wallet : " . $money;
+include "class/interfaces/interface.bank.php";
+include "class/class.wallet.php";
+include "class/class.banker.php";
 
-$dtr = new DataRetriever('https://api.binance.com/api/v3/ticker/price');
-// Boucle while ??
+include "class/abstract.class.traderfactory.php";
+include "class/binance/class.binanceTraderFactory.php";
+include "class/interfaces/interface.trader.php";
+include "class/binance/class.traderBinance.php";
+include "class/class.analyzer.php";
+include "class/binance/class.platformbinance.php";
+include "class/class.command.php";
 
-//Connexion au bordel
+include "class/class.logger.php";
 
-//analyser return si on est en position d'achat ou de vente et lance en conséquence le trader
 
-// creation du wallet et banker pour la binance factory
+$factory = new BinanceTraderFactory();
+$analizer = new Analyzer(
+    new ProxyDataRetriever(
+        new DataRetriever("https://api.binance.com/api/v3/ticker/price")
+    ),
+    new Algorithm()
+);
 
-// Retire ou ajoute money ou crypto au banker
+$bank = new Banker(new Wallet());
 
-// $pltf = new PlatformBinance($trader, $analyser);
+$pltf = new PlatformBinance($analizer, $factory->createTrader($bank));
 
-// $pltf->run();
+$pltf->run();

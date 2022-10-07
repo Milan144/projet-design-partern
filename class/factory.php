@@ -1,5 +1,7 @@
 <?php
 
+include "./wallet.php";
+
 interface Trader {
     public function buy();
     public function sell();
@@ -23,7 +25,7 @@ class CoinbaseTraderFactory{
 // -------------------------------------
 
 
-class BinanceTrader implements Trader{
+class BinanceTrader implements Trader  extends Banker{
     public function buy($symbol, $quantity, $amount){
         #demande au banker $amount
         #withdraw au bunker
