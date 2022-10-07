@@ -1,24 +1,36 @@
 <?php
 
-class PlatformBinance{
-    Analyser $analyser;
-    Trader $trader;
+class PlatformBinance
+{
+    private Analyzer $analyzer;
+    private Trader $trader;
 
-    public function run():void{
-        while($command = $this->analyser->waitForCommand()){
-            if ($command->getAction()== "buy"){
-                $quantity = 1;
+    public function __construct(Analyzer $analyzer, Trader $trader)
+    {
+        $this->analyzer = $analyzer;
+        $this->trader = $trader;
+    }
+
+    public function run(): void
+    {
+
+        while ( $command = $this->analyzer->waitForCommand()) {
+            Logger::log("Command received: " . $command->getAction());
+            if ($command->getAction() == "buy") {
+
+                // Ramener le prix a 20
+                $quantity = 20/$command->getPrice();
 
                 $this->trader->buy(
                     $command->getSymbol(),
                     $quantity,
                     $command->getPrice()
                 );
-            } else{
+            } else {
                 $this->trader->sell(
                     $command->getSymbol(),
                     $command->getPrice()
-                )
+                );
             }
         }
     }
