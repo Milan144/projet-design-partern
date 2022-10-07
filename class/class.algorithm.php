@@ -1,11 +1,9 @@
 <?php
 
-class Algorithm
-{
+class Algorithm{
 
     // Constructor
-    public function __construct()
-    {
+    public function __construct(){
         // Nothing to do here
     }
 
@@ -28,12 +26,12 @@ class Algorithm
         $average = $sum / ($size - 1);
 
         // BUY
-        if ($arrayPrices[$size - 1] > $average * 1.02) {
+        if ($arrayPrices[$size - 1] > $average*1.02) {
             return 1;
         }
 
         // SELL
-        if ($arrayPrices[$size - 1] < $average / 1.02) {
+        if ($arrayPrices[$size - 1] < $average/1.02) {
             return -1;
         }
 
