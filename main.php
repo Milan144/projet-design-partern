@@ -22,5 +22,7 @@ include("class/class.trader.php");
 
 
 $manager = new WalletManager($pdo);
-$wallet = $manager->getById(1);
+$wallet = $manager->getById(2);
+$manager->addWallet('$', 1, 200000000);
+// $manager->updateWalletSold(2, 7);
 var_dump($wallet);

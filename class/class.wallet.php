@@ -40,17 +40,23 @@ class WalletManager
         }
     }
 
+    public function addWallet($symbol, $buyingPrice, $quantity)
+    {
+        $del = $this->db->prepare("insert into Wallet (symbol, buyingPrice, quantity) values (?,?,?)");
+        $del->execute(array($symbol, $buyingPrice, $quantity));
+    }
+
     public function updateWalletSold($amount, $id)
     {
         $update = $this->db->prepare("update Wallet set quantity=? where id=?");
         $update->execute(array($amount, $id));
     }
 
-    // public function deleteUser($id)
-    // {
-    //     $del = $this->db->prepare("delete from User where numero_utilisateur=?");
-    //     $del->execute(array($id));
-    // }
+    public function deleteWallet($id)
+    {
+        $del = $this->db->prepare("delete from Wallet where id=?");
+        $del->execute(array($id));
+    }
 
     public function setDb(PDO $db)
     {
