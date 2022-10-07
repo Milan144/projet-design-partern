@@ -29,6 +29,33 @@ $dtr = new DataRetriever('https://api.binance.com/api/v3/ticker/price');
 // $pltf->run();
 
 
+//__________________________________________________________
+
+// initialisation : Wallet et Banker
+// Connexion entre la DataBase et le wallet via un Singleton (limite instance de connexion)
+
+$wallet = new Wallet();
+
+$bank = new Banker($wallet); //lien avec le wallet                  #Pattern Proxy lien Trader DB
+
+//Initialisation du trader ( Factory => construction des objets)
+
+$factory = newBinanceTraderFactory();
+
+// creation d'un trader reutilisable quelque soit la plateform ( seulement une petite modif )
+
+$traderLambda = $factory->createTrader(new Banker());
+
+// initialisation de l'analyser
+
+
+
+//lance la plateforme qui prend en charge l'analyser et le trader
+//l'analyser tourne et prend ses décisions : lorsque 1 /-1 est retourné ==> envoie d'une instruction (via les classes COMMAND et WAITFORCOMMAND) au trader de l'achat ou de la vente
+
+// trader demande au banker si il y a assez pour effectuer une transaction ou alors encaisse
+
+
 
 
 
