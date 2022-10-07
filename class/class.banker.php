@@ -11,7 +11,7 @@ class Banker implements Bank{
         $this->myMoneyBuffer = $wallet->getMyMoney();
     }
 
-    public function getMyMoney(): float
+    public function getMyMoney($id): array
     {
         return $this->myMoneyBuffer;
     }
