@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Oct 06, 2022 at 09:11 AM
+-- Generation Time: Oct 06, 2022 at 02:51 PM
 -- Server version: 5.7.34
 -- PHP Version: 7.4.21
 
@@ -29,8 +29,19 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `wallet` (
   `id` int(11) NOT NULL,
-  `value` int(11) NOT NULL
+  `symbol` text NOT NULL,
+  `buyingPrice` float NOT NULL,
+  `quantity` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `wallet`
+--
+
+INSERT INTO `wallet` (`id`, `symbol`, `buyingPrice`, `quantity`) VALUES
+(1, 'BTC', 10000, 0.01),
+(2, 'ETH', 5000, 0.5),
+(3, 'CANN', 100, 0.5785);
 
 --
 -- Indexes for dumped tables
@@ -50,7 +61,7 @@ ALTER TABLE `wallet`
 -- AUTO_INCREMENT for table `wallet`
 --
 ALTER TABLE `wallet`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -1,9 +1,13 @@
 <?php
 
-// class Trader{
-//     Banker bk;
+class Trader{
+    private int $id;
 
-//     buy(String symbol, amount, price);
-    
-//     sell(String symbol, amount, price);
-// }
+    public function buy(String $symbol, $amount, $price){
+
+    }
+
+    public function sell(String $symbol, $amount, $price){
+
+    }
+}
