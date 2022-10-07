@@ -1,4 +1,6 @@
 <?php
+include "class.wallet.php";
+include "connexion.php";
 
 class Banker implements Bank{
 
@@ -11,9 +13,12 @@ class Banker implements Bank{
         $this->myMoneyBuffer = $wallet->getMyMoney();
     }
 
-    public function getMyMoney(): float
+    public function getMyMoney($pdo, $id): float
     {
-        return $this->myMoneyBuffer;
+        $manager = new WalletManager($pdo);
+        $money = $manager->getById(2);
+        echo $money[2]
+
     }
 
     public function storeMoney($amount): void

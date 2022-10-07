@@ -1,26 +1,18 @@
 <?php
-try {
-    $pdo = new PDO("mysql:host=localhost;dbname=bot-crypto", "root", "");
-} catch (PDOException $e) {
-    echo $e->getMessage();
-}
 
-
-//Singleton
+//SINGLETON
 Class DBConnector{
 
-    static Connection mysql;
+    public static function connexion(){
+        $dbname = 'bot-crypto';
+        $host='localhost';
+        $user = 'root';
+        $password='';
 
-    public static Connection getConnection(){
-        if(mysql == null){
-            mysql = new MySqlInstance(
-                            "localhost" ,
-                            "root" ,
-                            "" ,
-                            "bot-crypto"
-                        );
-        } 
-        return mysql;
+        try {
+            $pdo = new PDO("mysql:host=$host;dbname=$dbname", "$user", "$password");
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }   
     }
-
 }

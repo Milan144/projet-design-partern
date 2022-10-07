@@ -1,7 +1,7 @@
 <?php
 
 interface Bank{
-    public function getMyMoney() : float;
+    public function getMyMoney($pdo, $id) : float;
     public function storeMoney($amount) : void;
     public function withdrawMoney($amount) : float;
     public function storeCryptos($oneCryptoBought) : void;

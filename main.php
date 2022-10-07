@@ -13,7 +13,7 @@ $manager->addWallet('$', 1, 200000000);
 // $manager->updateWalletSold(2, 7);
 var_dump($wallet);
 
-
+$dtr = new DataRetriever('https://api.binance.com/api/v3/ticker/price');
 // Boucle while ??
 
 //Connexion au bordel
@@ -24,7 +24,9 @@ var_dump($wallet);
 
 // Retire ou ajoute money ou crypto au banker
 
+// $pltf = new PlatformBinance($trader, $analyser);
 
+// $pltf->run();
 
 
 
