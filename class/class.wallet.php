@@ -8,6 +8,42 @@ class Wallet
     private $buyingPrice;
     private $quantity;
 
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function setSymbol($symbol)
+    {
+        $this->symbol = $symbol;
+    }
+    public function getSymbol()
+    {
+        return $this->symbol;
+    }
+
+    public function setPrice($buyingPrice)
+    {
+        $this->buyingPrice = $buyingPrice;
+    }
+    public function getPrice()
+    {
+        return $this->buyingPrice;
+    }
+
+    public function setQuantity($quantity)
+    {
+        $this->quantity = $quantity;
+    }
+    public function getQuantity()
+    {
+        return $this->quantity;
+    }
+
     public function __construct(int $id, String $symbol, int $buyingPrice, int $quantity)
     {
         $this->id = $id;

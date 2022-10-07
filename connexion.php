@@ -1,18 +1,21 @@
 <?php
 
 //SINGLETON
-Class DBConnector{
+class DBConnector
+{
 
-    public static function connexion(){
+    public static function connexion()
+    {
         $dbname = 'bot-crypto';
-        $host='localhost';
+        $host = 'localhost';
         $user = 'root';
-        $password='';
+        $password = '';
 
         try {
             $pdo = new PDO("mysql:host=$host;dbname=$dbname", "$user", "$password");
+            return $pdo;
         } catch (PDOException $e) {
             echo $e->getMessage();
-        }   
+        }
     }
 }

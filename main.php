@@ -1,17 +1,17 @@
 <?php
-include("connexion.php");
-include("class/class.proxydataretriever.php");
-include("class/class.dataretriever.php");
-include("class/class.algorithm.php");
-include("class/class.trader.php");
-include("class/class.wallet.php");
-include("class/class.trader.php");
+require_once('class/classes.php');
 
 $manager = new WalletManager($pdo);
 $wallet = $manager->getById(2);
 $manager->addWallet('$', 1, 200000000);
 // $manager->updateWalletSold(2, 7);
 var_dump($wallet);
+
+$bdd = new DBConnector();
+$pdo = $bdd->connexion();
+$bank = new Banker($wallet);
+$money = $bank->getMyMoney($pdo, 2);
+echo "solde sur le wallet : " . $money;
 
 $dtr = new DataRetriever('https://api.binance.com/api/v3/ticker/price');
 // Boucle while ??
@@ -27,11 +27,3 @@ $dtr = new DataRetriever('https://api.binance.com/api/v3/ticker/price');
 // $pltf = new PlatformBinance($trader, $analyser);
 
 // $pltf->run();
-
-
-
-
-
-
-
-
